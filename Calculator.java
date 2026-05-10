@@ -1,78 +1,71 @@
 import java.util.Scanner;
 
-public class Calculator {
+class Calculator {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        String choice;
 
         try {
 
+            System.out.print("Enter first number: ");
+            int n1 = sc.nextInt();
+
+            System.out.print("Enter second number: ");
+            int n2 = sc.nextInt();
+
+            String ans;
+
             do {
+                System.out.println("***** Calculator ******");
+                System.out.println("1. Addition");
+                System.out.println("2. Subtraction");
+                System.out.println("3. Multiplication");
+                System.out.println("4. Division");
+                System.out.println("5. Exit");
 
-                System.out.println("Enter First number:");
-                int a = sc.nextInt();
+                System.out.print("What operation do you want to perform?(1/2/3/4/5): ");
+                int choose = sc.nextInt();
 
-                System.out.println("Enter second number:");
-                int b = sc.nextInt();
-
-                System.out.println("1-Addition:");
-                System.out.println("2-Substraction:");
-                System.out.println("3-Multiplication:");
-                System.out.println("4-Division:");
-                System.out.println("5-Modulus:");
-                System.out.println("6-Power:");
-
-                System.out.println("Enter no of operation do you want to perform:");
-                int opr = sc.nextInt();
-
-                switch (opr) {
-
+                switch (choose) {
                     case 1:
-                        System.out.println("Addition of two numbers is:" + (a + b));
+                        System.out.println("The addition of the numbers is: " + (n1 + n2));
                         break;
 
                     case 2:
-                        System.out.println("Substraction of two numbers is:" + (a - b));
+                        System.out.println("The subtraction of the numbers is: " + (n1 - n2));
                         break;
 
                     case 3:
-                        System.out.println("Multiplication of two numbers is:" + (a * b));
+                        System.out.println("The multiplication of the numbers is: " + (n1 * n2));
                         break;
 
                     case 4:
-                        if (b != 0) {
-                            System.out.println("Division of two numbers is:" + (a / b));
-                        } else {
-                            System.out.println("Division of two numbers is not possible");
-                        }
+                        System.out.println("The division of the numbers is: " + (n1 / n2));
                         break;
 
                     case 5:
-                        if (b != 0) {
-                            System.out.println("Modulus of two numbers is:" + (a % b));
-                        } else {
-                            System.out.println("Modulus of two numbers is not possible");
-                        }
-                        break;
-
-                    case 6:
-                        System.out.println("Power of given number is:" + Math.pow(a, b));
+                        System.out.println("Calculator Closed!");
                         break;
 
                     default:
-                        System.out.println("Invalid");
+                        System.out.println("Invalid choice!");
                 }
 
-                System.out.println("Do you want to continue(yes/no):");
-                choice = sc.next();
+                System.out.print("Do you want to continue? (y/n): ");
+                ans = sc.next();
 
-            } while (choice.equals("yes"));
+            } while (ans.equals("y"));
 
-        }
-
+        } 
         catch (ArithmeticException e) {
-            System.out.println("Division and Modulus is not possible");
+            System.out.println("Cannot divide by zero!");
+        } 
+        catch (Exception e) {
+            System.out.println("Invalid Input!");
         }
+
+        System.out.println("Thank you for using calculator :-)");
+
+        sc.close();
     }
 }
